@@ -52,6 +52,9 @@ class ViewController : UITableViewController, UITextFieldDelegate {
         // Create the action.
         let cancelAction = DOAlertAction(title: cancelButtonTitle, style: .cancel) { action in
             NSLog("The simple alert's cancel action occured.")
+            let systemAlertController = UIAlertController(title: "Test present after completion", message: nil, preferredStyle: .alert)
+            systemAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(systemAlertController, animated: true, completion: nil)
         }
         
         // Add the action.

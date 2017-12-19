@@ -630,20 +630,22 @@ open class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCont
     @objc func buttonTapped(_ sender: UIButton) {
         sender.isSelected = true
         let action = actions[sender.tag - 1] as! DOAlertAction
-        if (action.handler != nil) {
-            action.handler(action)
-        }
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion:{
+            if (action.handler != nil) {
+                action.handler(action)
+            }
+        })
     }
     
     // Handle ContainerView tap gesture
     @objc func handleContainerViewTapGesture(_ sender: AnyObject) {
         // cancel action
         let action = actions[cancelButtonTag - 1] as! DOAlertAction
-        if (action.handler != nil) {
-            action.handler(action)
-        }
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion:{
+            if (action.handler != nil) {
+                action.handler(action)
+            }
+        })
     }
     
     // UIColor -> UIImage
